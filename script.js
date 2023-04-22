@@ -20,4 +20,4 @@ function quizStart() {
     }, 1000);
 }
 
-quizStart()
+// quizStart()

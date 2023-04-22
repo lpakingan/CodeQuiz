@@ -1,0 +1,14 @@
+body {
+    font-family: Arial;
+    margin: auto;
+    padding: 20px;
+}
+
+.quizHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+header h2 {
+    font-size: 15px;
+}
