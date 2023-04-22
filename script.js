@@ -23,3 +23,4 @@ function quizStart() {
 }
 
 // quizStart()
+startScreen.style.display = 'none';
