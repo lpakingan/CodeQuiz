@@ -1,7 +1,8 @@
 body {
     font-family: Arial;
+    font-size: 20px;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .quizHeader {
@@ -11,4 +12,24 @@ body {
 
 header h2 {
     font-size: 15px;
+}
+
+.start_screen {
+    text-align: center
+}
+
+.start_screen h1 {
+    font-size: 40px;
+}
+
+button {
+    color: white;
+    background-color: blueviolet;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }
