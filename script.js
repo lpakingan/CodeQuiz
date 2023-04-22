@@ -1,7 +1,9 @@
 var timerEl = document.getElementById('quizTimer');
+var startScreen = document.querySelector(".start_screen")
 
 function quizStart() {
     var quizTime = 20;
+    startScreen.style.display = 'none';
 
     var quizInterval = setInterval(function () {
         if (quizTime >= 10) {
