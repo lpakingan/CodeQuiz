@@ -70,4 +70,5 @@ function randomQuestion() {
 // quizScreen.style.display = 'none';
 
 randomQuestion()
+quizTimer()
 
