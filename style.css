@@ -30,6 +30,10 @@ header h2 {
     list-style-type: none;
 }
 
+ul {
+    padding: 0;
+}
+
 button {
     color: white;
     font-size: 25px;
