@@ -38,5 +38,16 @@ function quizTimer() {
     }, 1000);
 }
 
-// quizStart()
+// will pick a random question from the question array to begin the quiz with
+// after the question is picked, the relevant index of the question is used to find the corresponding answers
+// the question and answers are printed to the page
+function randomQuestion() {
+    pickedQuestion = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
+    answerIndex = possibleQuestions.indexOf(pickedQuestion)
+    questionPrompt.textContent = pickedQuestion
+    answersPrompt.textContent = quizAnswers[answerIndex]
+}
+
 startScreen.style.display = 'none';
+randomQuestion()
+
