@@ -53,12 +53,14 @@ function randomQuestion() {
     questionPrompt.textContent = pickedQuestion;
 
     // indexes into the current question's answers and creates an li for each answer
-    // appends each answer to the page
+    // for each li answer, creates a button and appends it to the answers section
     var questionAnswers = thisQuizAnswers[currentIndex]
     for (var i = 0; i < questionAnswers.length; i++) {
         var individualAnswer = document.createElement('li');
         answersPrompt.appendChild(individualAnswer);
-        individualAnswer.textContent = questionAnswers[i];
+        var answerButtons = document.createElement('button');
+        answerButtons.innerText = questionAnswers[i];
+        answersPrompt.appendChild(answerButtons)
     }
 
     // removes the picked question and answer from getting picked again
@@ -70,5 +72,5 @@ function randomQuestion() {
 // quizScreen.style.display = 'none';
 
 randomQuestion()
-quizTimer()
+// quizTimer()
 
