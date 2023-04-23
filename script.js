@@ -13,11 +13,11 @@ var possibleQuestions =
 "A very useful tool used during development and debugging for printing content to the debugger is:"]
 
 var quizAnswers = [
-['strings', 'booleans', 'alerts', 'numbers'],
-['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-['commas', 'curly brackets', 'quotes', 'parenthesis'],
-['JavaScript', 'terminal/bash', 'for loops', 'console.log']]
+['strings', 'booleans', 'alerts', 'numbers', 2],
+['quotes', 'curly brackets', 'parenthesis', 'square brackets', 2],
+['numbers and strings', 'other arrays', 'booleans', 'all of the above', 3],
+['commas', 'curly brackets', 'quotes', 'parenthesis', 2],
+['JavaScript', 'terminal/bash', 'for loops', 'console.log', 3]]
 
 function quizTimer() {
     var quizTime = 80;
@@ -52,11 +52,11 @@ function randomQuestion() {
 
         // indexes into the current question's answers and creates an li for each answer
         // for each li answer, creates a button and appends it to the answers section
-        var questionAnswers = thisQuizAnswers[currentIndex]
-        for (var i = 0; i < questionAnswers.length; i++) {
-            var individualAnswer = document.createElement('li');
+        questionAnswers = thisQuizAnswers[currentIndex]
+        for (var i = 0; i < questionAnswers.length-1; i++) {
+            individualAnswer = document.createElement('li');
             answersPrompt.appendChild(individualAnswer);
-            var answerButtons = document.createElement('button');
+            answerButtons = document.createElement('button');
             answerButtons.innerText = questionAnswers[i];
             answersPrompt.appendChild(answerButtons)
         }
@@ -73,6 +73,7 @@ function beginQuiz() {
     thisQuizQuestions = possibleQuestions.slice() 
     thisQuizAnswers = quizAnswers.slice()
     quizTimer();
+    score = 0
 
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
@@ -80,4 +81,4 @@ function beginQuiz() {
 }
 
 startButton.addEventListener("click", beginQuiz);
-// answersPrompt.addEventListener("click", randomQuestion);
+answersPrompt.addEventListener("click", randomQuestion);
