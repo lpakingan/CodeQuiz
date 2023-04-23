@@ -1,7 +1,8 @@
 var timerEl = document.getElementById('quizTimer');
-var startScreen = document.querySelector(".start_screen")
-var questionPrompt = document.getElementById('question')
-var answersPrompt = document.querySelector(".answers")
+var startScreen = document.querySelector(".start_screen");
+var quizScreen = document.querySelector(".quiz_screen");
+var questionPrompt = document.getElementById('question');
+var answersPrompt = document.querySelector(".answers");
 
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -43,11 +44,13 @@ function quizTimer() {
 // the question and answers are printed to the page
 function randomQuestion() {
     pickedQuestion = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
-    answerIndex = possibleQuestions.indexOf(pickedQuestion)
-    questionPrompt.textContent = pickedQuestion
-    answersPrompt.textContent = quizAnswers[answerIndex]
+    answerIndex = possibleQuestions.indexOf(pickedQuestion);
+    questionPrompt.textContent = pickedQuestion;
+    answersPrompt.textContent = quizAnswers[answerIndex];
 }
 
 startScreen.style.display = 'none';
+quizScreen.style.display = 'none';
+
 randomQuestion()
 
