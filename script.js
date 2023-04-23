@@ -1,5 +1,13 @@
 var timerEl = document.getElementById('quizTimer');
 var startScreen = document.querySelector(".start_screen")
+var questionPrompt = document.getElementById('question')
+
+var possibleQuestions = 
+["Commonly used data types do NOT include _____.",
+"The condition of an if/else statement is enclosed with _____.",
+"Arrays in JavaScript can be used to store _____.",
+"String values must be enclosed within _____ when being assigned to variables.",
+"A very useful tool used during development and debugging for printing content to the debugger is:"]
 
 function quizStart() {
     var quizTime = 20;
@@ -24,3 +32,4 @@ function quizStart() {
 
 // quizStart()
 startScreen.style.display = 'none';
+
