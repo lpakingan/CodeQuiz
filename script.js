@@ -3,6 +3,7 @@ var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
+var startButton = document.querySelector(".start-button")
 
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -41,10 +42,6 @@ function quizTimer() {
 
 // picks questions in random order for quiz
 function randomQuestion() {
-    // create separate arrays that will not affect the root arrays (so it is unique for each quiz)
-    var thisQuizQuestions = possibleQuestions.slice() 
-    var thisQuizAnswers = quizAnswers.slice()
-
     // picks random question for quiz and finds index for corresponding answer in answer array
     pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
     currentIndex = thisQuizQuestions.indexOf(pickedQuestion);
@@ -68,9 +65,16 @@ function randomQuestion() {
     thisQuizAnswers.splice(currentIndex, 1);
 }
 
-// startScreen.style.display = 'none';
-// quizScreen.style.display = 'none';
+// starts the quiz by calling on the randomQuestion and quizTimer functions
+function beginQuiz() {
+    // create separate arrays that will not affect the root arrays (so it is unique for each quiz)
+    thisQuizQuestions = possibleQuestions.slice() 
+    thisQuizAnswers = quizAnswers.slice()
 
-randomQuestion()
-// quizTimer()
+    if (thisQuizQuestions.length > 0) {
+        randomQuestion();
+        quizTimer();
+    } 
+}
 
+startButton.addEventListener("click", beginQuiz);
