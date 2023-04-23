@@ -46,4 +46,7 @@ button {
 
 button:hover {
     cursor: pointer;
+    background-color: blue;
+    zoom: 1.1;
+    transition: 1s
 }

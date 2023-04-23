@@ -70,10 +70,10 @@ function beginQuiz() {
     // create separate arrays that will not affect the root arrays (so it is unique for each quiz)
     thisQuizQuestions = possibleQuestions.slice() 
     thisQuizAnswers = quizAnswers.slice()
+    quizTimer();
 
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
-        quizTimer();
     } 
 }
 
