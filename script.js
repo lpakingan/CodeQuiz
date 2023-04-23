@@ -1,6 +1,7 @@
 var timerEl = document.getElementById('quizTimer');
 var startScreen = document.querySelector(".start_screen")
 var questionPrompt = document.getElementById('question')
+var answersPrompt = document.querySelector(".answers")
 
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -16,8 +17,8 @@ var quizAnswers = [
 ['commas', 'curly brakcets', 'quotes', 'parenthesis'],
 ['JavaScript', 'terminal/bash', 'for loops', 'console.log']]
 
-function quizStart() {
-    var quizTime = 20;
+function quizTimer() {
+    var quizTime = 80;
     startScreen.style.display = 'none';
 
     var quizInterval = setInterval(function () {
@@ -39,4 +40,3 @@ function quizStart() {
 
 // quizStart()
 startScreen.style.display = 'none';
-
