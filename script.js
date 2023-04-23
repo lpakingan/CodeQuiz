@@ -51,15 +51,23 @@ function randomQuestion() {
 
     // writes the question and answers to the webpage
     questionPrompt.textContent = pickedQuestion;
-    answersPrompt.textContent = thisQuizAnswers[currentIndex];
+
+    // indexes into the current question's answers and creates an li for each answer
+    // appends each answer to the page
+    var questionAnswers = thisQuizAnswers[currentIndex]
+    for (var i = 0; i < questionAnswers.length; i++) {
+        var individualAnswer = document.createElement('li');
+        answersPrompt.appendChild(individualAnswer);
+        individualAnswer.textContent = questionAnswers[i];
+    }
 
     // removes the picked question and answer from getting picked again
     thisQuizQuestions.splice(currentIndex, 1);
     thisQuizAnswers.splice(currentIndex, 1);
 }
 
-startScreen.style.display = 'none';
-quizScreen.style.display = 'none';
+// startScreen.style.display = 'none';
+// quizScreen.style.display = 'none';
 
-// randomQuestion()
+randomQuestion()
 
