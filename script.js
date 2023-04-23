@@ -9,6 +9,13 @@ var possibleQuestions =
 "String values must be enclosed within _____ when being assigned to variables.",
 "A very useful tool used during development and debugging for printing content to the debugger is:"]
 
+var quizAnswers = [
+['strings', 'booleans', 'alerts', 'numbers'],
+['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
+['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
+['commas', 'curly brakcets', 'quotes', 'parenthesis'],
+['JavaScript', 'terminal/bash', 'for loops', 'console.log']]
+
 function quizStart() {
     var quizTime = 20;
     startScreen.style.display = 'none';
