@@ -43,26 +43,28 @@ function quizTimer() {
 // picks questions in random order for quiz
 function randomQuestion() {
     // picks random question for quiz and finds index for corresponding answer in answer array
-    pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
-    currentIndex = thisQuizQuestions.indexOf(pickedQuestion);
+    for (var i = 0; i < thisQuizAnswers.length; i++) {
+        pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
+        currentIndex = thisQuizQuestions.indexOf(pickedQuestion);
 
-    // writes the question and answers to the webpage
-    questionPrompt.textContent = pickedQuestion;
+        // writes the question and answers to the webpage
+        questionPrompt.textContent = pickedQuestion;
 
-    // indexes into the current question's answers and creates an li for each answer
-    // for each li answer, creates a button and appends it to the answers section
-    var questionAnswers = thisQuizAnswers[currentIndex]
-    for (var i = 0; i < questionAnswers.length; i++) {
-        var individualAnswer = document.createElement('li');
-        answersPrompt.appendChild(individualAnswer);
-        var answerButtons = document.createElement('button');
-        answerButtons.innerText = questionAnswers[i];
-        answersPrompt.appendChild(answerButtons)
+        // indexes into the current question's answers and creates an li for each answer
+        // for each li answer, creates a button and appends it to the answers section
+        var questionAnswers = thisQuizAnswers[currentIndex]
+        for (var i = 0; i < questionAnswers.length; i++) {
+            var individualAnswer = document.createElement('li');
+            answersPrompt.appendChild(individualAnswer);
+            var answerButtons = document.createElement('button');
+            answerButtons.innerText = questionAnswers[i];
+            answersPrompt.appendChild(answerButtons)
+        }
+
+        // removes the picked question and answer from getting picked again
+        thisQuizQuestions.splice(currentIndex, 1);
+        thisQuizAnswers.splice(currentIndex, 1);
     }
-
-    // removes the picked question and answer from getting picked again
-    thisQuizQuestions.splice(currentIndex, 1);
-    thisQuizAnswers.splice(currentIndex, 1);
 }
 
 // starts the quiz by calling on the randomQuestion and quizTimer functions
@@ -78,3 +80,4 @@ function beginQuiz() {
 }
 
 startButton.addEventListener("click", beginQuiz);
+// answersPrompt.addEventListener("click", randomQuestion);
