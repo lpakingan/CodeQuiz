@@ -39,18 +39,27 @@ function quizTimer() {
     }, 1000);
 }
 
-// will pick a random question from the question array to begin the quiz with
-// after the question is picked, the relevant index of the question is used to find the corresponding answers
-// the question and answers are printed to the page
+// picks questions in random order for quiz
 function randomQuestion() {
-    pickedQuestion = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
-    answerIndex = possibleQuestions.indexOf(pickedQuestion);
+    // create separate arrays that will not affect the root arrays (so it is unique for each quiz)
+    var thisQuizQuestions = possibleQuestions.slice() 
+    var thisQuizAnswers = quizAnswers.slice()
+
+    // picks random question for quiz and finds index for corresponding answer in answer array
+    pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
+    currentIndex = thisQuizQuestions.indexOf(pickedQuestion);
+
+    // writes the question and answers to the webpage
     questionPrompt.textContent = pickedQuestion;
-    answersPrompt.textContent = quizAnswers[answerIndex];
+    answersPrompt.textContent = thisQuizAnswers[currentIndex];
+
+    // removes the picked question and answer from getting picked again
+    thisQuizQuestions.splice(currentIndex, 1);
+    thisQuizAnswers.splice(currentIndex, 1);
 }
 
 startScreen.style.display = 'none';
 quizScreen.style.display = 'none';
 
-randomQuestion()
+// randomQuestion()
 
