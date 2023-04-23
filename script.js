@@ -15,7 +15,7 @@ var quizAnswers = [
 ['strings', 'booleans', 'alerts', 'numbers'],
 ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
 ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
-['commas', 'curly brakcets', 'quotes', 'parenthesis'],
+['commas', 'curly brackets', 'quotes', 'parenthesis'],
 ['JavaScript', 'terminal/bash', 'for loops', 'console.log']]
 
 function quizTimer() {

@@ -32,8 +32,10 @@ header h2 {
 
 button {
     color: white;
+    font-size: 25px;
     background-color: blueviolet;
     padding: 15px;
+    margin: 10px;
     border-radius: 10px;
     border: none;
 }
