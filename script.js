@@ -4,19 +4,19 @@ var scoreEl = document.getElementById('score');
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var endScreen = document.querySelector(".end_screen");
-var highscoresScreen = document.querySelector(".highscores_screen")
+var highscoresScreen = document.querySelector(".highscores_screen");
 
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
-var correctAnswer = document.getElementById("correctAnswer")
-var incorrectAnswer = document.getElementById("incorrectAnswer")
-var viewHighscores = document.getElementById("viewHighscores")
-var submissionMessage = document.getElementById("submissionMsg")
+var correctAnswer = document.getElementById("correctAnswer");
+var incorrectAnswer = document.getElementById("incorrectAnswer");
+var viewHighscores = document.getElementById("viewHighscores");
+var submissionMessage = document.getElementById("submissionMsg");
 
 var startButton = document.querySelector(".start-button");
 var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
-var submitButton = document.querySelector(".submit-button")
+var submitButton = document.querySelector(".submit-button");
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -216,16 +216,17 @@ for (var i = 0; i < backButton.length; i ++) {
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    var scoreName = document.getElementById("submission").value;
+    var name = document.getElementById("submission").value;
 
     // if the name that is input is empty
-    if (scoreName === "" || !scoreName) {
+    if (name === "" || !name) {
         submissionMessage.innerText = 'You must enter your name to submit your highscore!'
     } else {
         submissionMessage.innerText = 'Score submission successful! Go back to play again!'
         submitButton.style.display = 'none';
-        scoreName.value = "";
+        localStorage.setItem("name", name);
+        localStorage.setItem("score", score);
     }
-
 })
+
 init();
