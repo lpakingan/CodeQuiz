@@ -46,10 +46,6 @@ function quizTimer() {
 
 // picks questions in random order for quiz
 function randomQuestion() {
-    // removes correct/incorrect answer display
-    correctAnswer.style.display = 'none';
-    incorrectAnswer.style.display = 'none';
-
     // picks random question for quiz and finds index for corresponding answer in answer array
     for (var i = 0; i < thisQuizAnswers.length; i++) {
         pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
@@ -81,6 +77,10 @@ function randomQuestion() {
 // if the index of the clicked answer equals the index listed at the end of the answer array, returns correct
 // if the index is not equal, the wrong answer was chosen and the quiz timer depletes by 10 seconds
 function checkAnswer(event) {
+    // removes correct/incorrect answer display
+    correctAnswer.style.display = 'none';
+    incorrectAnswer.style.display = 'none';
+
     var clickedAnswer = event.target.innerText;
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
     if (clickedAnswerIndex === questionAnswers[4]) {
