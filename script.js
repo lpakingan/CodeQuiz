@@ -1,4 +1,5 @@
 var timerEl = document.getElementById('quizTimer');
+var scoreEl = document.getElementById('score')
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var questionPrompt = document.getElementById('question');
@@ -83,7 +84,7 @@ function checkAnswer(event) {
             answersPrompt.innerHTML =''
             randomQuestion();
         } else {
-            endgame();
+            endQuiz();
         }
     } else {
         console.log('incorrect!');
@@ -93,7 +94,7 @@ function checkAnswer(event) {
             answersPrompt.innerHTML =''
             randomQuestion();
         } else {
-            endgame();
+            endQuiz();
         }
     }
 }
@@ -109,6 +110,11 @@ function beginQuiz() {
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
     } 
+}
+
+function endQuiz() {
+    quizScreen.style.display = 'none';
+    scoreEl.innerText = score
 }
 
 startButton.addEventListener("click", beginQuiz);
