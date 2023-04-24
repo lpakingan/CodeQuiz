@@ -5,6 +5,8 @@ var quizScreen = document.querySelector(".quiz_screen");
 var endScreen = document.querySelector(".end_screen");
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
+var correctAnswer = document.getElementById("correctAnswer")
+var incorrectAnswer = document.getElementById("incorrectAnswer")
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
 
@@ -44,6 +46,10 @@ function quizTimer() {
 
 // picks questions in random order for quiz
 function randomQuestion() {
+    // removes correct/incorrect answer display
+    correctAnswer.style.display = 'none';
+    incorrectAnswer.style.display = 'none';
+
     // picks random question for quiz and finds index for corresponding answer in answer array
     for (var i = 0; i < thisQuizAnswers.length; i++) {
         pickedQuestion = thisQuizQuestions[Math.floor(Math.random() * thisQuizQuestions.length)];
@@ -79,16 +85,18 @@ function checkAnswer(event) {
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
+        correctAnswer.style.display = 'block';
         score += 20;
         console.log(score)
         if (thisQuizQuestions.length > 0) {
-            answersPrompt.innerHTML =''
+            answersPrompt.innerHTML ='';
             randomQuestion();
         } else {
             endQuiz();
         }
     } else {
         console.log('incorrect!');
+        incorrectAnswer.style.display = 'block';
         quizTime -= 10;
         if (score >= 20) {
             score -= 20;
@@ -96,7 +104,7 @@ function checkAnswer(event) {
         console.log(score)
 
         if (thisQuizQuestions.length > 0) {
-            answersPrompt.innerHTML =''
+            answersPrompt.innerHTML ='';
             randomQuestion();
         } else {
             endQuiz();
@@ -112,6 +120,8 @@ function beginQuiz() {
 
     startScreen.style.display = 'none';
     quizScreen.style.display = 'block';
+    correctAnswer.style.display = 'none';
+    incorrectAnswer.style.display = 'none';
 
     quizTimer();
     score = 0;
