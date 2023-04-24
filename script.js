@@ -135,6 +135,7 @@ function beginQuiz() {
     quizScreen.style.display = 'block';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
+    viewHighscores.style.display = 'none';
 
     // runs quizTimer to start the timer and sets score at 100
     quizTimer();
@@ -150,6 +151,7 @@ function beginQuiz() {
 function endQuiz() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
+    viewHighscores.style.display = 'block';
     quizTime = 0;
     scoreEl.innerText = score;
 }
@@ -161,6 +163,7 @@ function showHighscores() {
     endScreen.style.display = 'none';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
+    viewHighscores.style.display = 'none';
 
     highscoresScreen.style.display = 'block';
 }
