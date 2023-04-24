@@ -7,6 +7,7 @@ var highscoresScreen = document.querySelector(".highscores_screen")
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer")
+var viewHighscores = document.getElementById("viewHighscores")
 var incorrectAnswer = document.getElementById("incorrectAnswer")
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
@@ -149,6 +150,16 @@ function endQuiz() {
     scoreEl.innerText = score;
 }
 
+function showHighscores() {
+    startScreen.style.display = 'none';
+    quizScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+    correctAnswer.style.display = 'none';
+    incorrectAnswer.style.display = 'none';
+
+    highscoresScreen.style.display = 'block';
+}
+
 // initializes the initial start screen
 function init() {
     quizScreen.style.display = 'none';
@@ -160,5 +171,7 @@ function init() {
 startButton.addEventListener("click", beginQuiz);
 // clicking on any answer button will check the answer to see if it is correct
 answersPrompt.addEventListener("click", checkAnswer);
+
+viewHighscores.addEventListener("click", showHighscores);
 
 init();
