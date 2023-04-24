@@ -1,16 +1,20 @@
 var timerEl = document.getElementById('quizTimer');
 var scoreEl = document.getElementById('score');
+
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var endScreen = document.querySelector(".end_screen");
 var highscoresScreen = document.querySelector(".highscores_screen")
+
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer")
 var viewHighscores = document.getElementById("viewHighscores")
 var incorrectAnswer = document.getElementById("incorrectAnswer")
+
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
+var backButton = document.querySelector(".goBack-button")
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -161,6 +165,12 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 }
 
+// when 'Go Back' button is pressed on highscores page, return user to the start page
+function backtoStartScreen() {
+    highscoresScreen.style.display = 'none';
+    startScreen.style.display = 'block';
+}
+
 // initializes the initial start screen
 function init() {
     quizScreen.style.display = 'none';
@@ -174,5 +184,7 @@ startButton.addEventListener("click", beginQuiz);
 answersPrompt.addEventListener("click", checkAnswer);
 // clicking 'View Highscores' at any point will redirect the user to the highscores page
 viewHighscores.addEventListener("click", showHighscores);
+// clicking 'Go Back' button on highscores page redirects user to the start screen
+backButton.addEventListener("click", backtoStartScreen)
 
 init();
