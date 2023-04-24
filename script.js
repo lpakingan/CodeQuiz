@@ -9,12 +9,14 @@ var highscoresScreen = document.querySelector(".highscores_screen")
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer")
-var viewHighscores = document.getElementById("viewHighscores")
 var incorrectAnswer = document.getElementById("incorrectAnswer")
+var viewHighscores = document.getElementById("viewHighscores")
+var submissionMessage = document.getElementById("submissionMsg")
 
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
-var backButton = document.querySelectorAll(".goBack-button")
+var backButton = document.querySelectorAll(".goBack-button");
+var submitButton = document.querySelector(".submit-button")
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -151,6 +153,8 @@ function endQuiz() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
     viewHighscores.style.display = 'block';
+    // if user played previously in the same session, displays submit button again
+    submitButton.style.display = 'inline';
     quizTime = 0;
     scoreEl.innerText = score;
 }
@@ -167,7 +171,7 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    quizTime = 0;
+    timerEl.textContent = ''
     score = 100;
 }
 
@@ -177,6 +181,7 @@ function backtoStartScreen() {
     endScreen.style.display = 'none';
     answersPrompt.innerHTML = '';
     timerEl.innerText = 'Press Start Quiz to begin!';
+    submissionMessage.innerText = '';
 
     startScreen.style.display = 'block';
 }
@@ -200,4 +205,20 @@ for (var i = 0; i < backButton.length; i ++) {
     backButton[i].addEventListener("click", backtoStartScreen)
 }
 
+// pressing the Submit Highscore button at the end of the quiz will submit the highscore to local storage
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var scoreName = document.getElementById("submission").value;
+
+    // if the name that is input is empty
+    if (scoreName === "" || !scoreName) {
+        submissionMessage.innerText = 'You must enter your name to submit your highscore!'
+    } else {
+        submissionMessage.innerText = 'Score submission successful! Go back to play again!'
+        submitButton.style.display = 'none';
+        scoreName.value = "";
+    }
+
+})
 init();
