@@ -168,7 +168,7 @@ function showHighscores() {
 
     answersPrompt.innerHTML = '';
     quizTime = 0;
-    score = 0;
+    score = 100;
 }
 
 // when 'Go Back' button is pressed on highscores page, return user to the start page
