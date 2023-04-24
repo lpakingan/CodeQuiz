@@ -80,6 +80,7 @@ function checkAnswer(event) {
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         score += 20;
+        console.log(score)
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML =''
             randomQuestion();
@@ -89,7 +90,11 @@ function checkAnswer(event) {
     } else {
         console.log('incorrect!');
         quizTime -= 10;
-        score -= 20;
+        if (score >= 20) {
+            score -= 20;
+        }
+        console.log(score)
+
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML =''
             randomQuestion();
