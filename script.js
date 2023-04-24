@@ -14,7 +14,7 @@ var viewHighscores = document.getElementById("viewHighscores")
 var submissionMessage = document.getElementById("submissionMsg")
 
 var startButton = document.querySelector(".start-button");
-var answerButton = document.getElementsByClassName(".answer-button");
+var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
 var submitButton = document.querySelector(".submit-button")
 
@@ -85,6 +85,12 @@ function randomQuestion() {
         thisQuizQuestions.splice(currentIndex, 1);
         thisQuizAnswers.splice(currentIndex, 1);
     }
+
+    // clicking on any answer button will check the answer to see if it is correct
+    // adds EventListener to all answer buttons
+    for (var i = 0; i < answerButton.length; i ++) {
+        answerButton[i].addEventListener("click", checkAnswer);
+    }
 }
 
 // checks the user's answer to determine if correct
@@ -147,6 +153,7 @@ function beginQuiz() {
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
     } 
+
 }
 
 // ends quiz by removing the quiz screen and shows the end screen with the final score
@@ -197,8 +204,6 @@ function init() {
 
 // pressing the Start Quiz button results in the quiz start
 startButton.addEventListener("click", beginQuiz);
-// clicking on any answer button will check the answer to see if it is correct
-answersPrompt.addEventListener("click", checkAnswer);
 // clicking 'View Highscores' at any point will redirect the user to the highscores page
 viewHighscores.addEventListener("click", showHighscores);
 // clicking 'Go Back' button on highscores page redirects user to the start screen
