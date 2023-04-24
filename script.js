@@ -41,7 +41,7 @@ function quizTimer() {
 
     // if the quiz's timer goes below 10 seconds, a Hurry message is added
     // once the timer hits 0, the message changes to 'Time's Up!'
-    var quizInterval = setInterval(function () {
+    quizInterval = setInterval(function () {
         if (quizTime >= 10) {
             timerEl.textContent = quizTime + ' seconds';
             quizTime--;
@@ -171,7 +171,8 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    timerEl.textContent = ''
+    clearInterval(quizInterval)
+    timerEl.textContent = '';
     score = 100;
 }
 
