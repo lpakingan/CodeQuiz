@@ -3,6 +3,7 @@ var scoreEl = document.getElementById('score');
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var endScreen = document.querySelector(".end_screen");
+var highscoresScreen = document.querySelector(".highscores_screen")
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer")
@@ -152,6 +153,7 @@ function endQuiz() {
 function init() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'none';
+    highscoresScreen.style.display = 'none';
 }
 
 // pressing the Start Quiz button results in the quiz start
