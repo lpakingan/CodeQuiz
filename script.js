@@ -79,12 +79,22 @@ function checkAnswer(event) {
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         score += 20;
-        randomQuestion();
+        if (thisQuizQuestions.length > 0) {
+            answersPrompt.innerHTML =''
+            randomQuestion();
+        } else {
+            endgame();
+        }
     } else {
         console.log('incorrect!');
         quizTime -= 10;
         score -= 20;
-        randomQuestion()
+        if (thisQuizQuestions.length > 0) {
+            answersPrompt.innerHTML =''
+            randomQuestion();
+        } else {
+            endgame();
+        }
     }
 }
 
