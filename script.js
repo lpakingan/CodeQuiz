@@ -4,6 +4,7 @@ var quizScreen = document.querySelector(".quiz_screen");
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var startButton = document.querySelector(".start-button")
+var answerButton = document.querySelectorAll(".answerbutton")
 
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -20,7 +21,7 @@ var quizAnswers = [
 ['JavaScript', 'terminal/bash', 'for loops', 'console.log', 3]]
 
 function quizTimer() {
-    var quizTime = 80;
+    quizTime = 80;
     startScreen.style.display = 'none';
 
     var quizInterval = setInterval(function () {
@@ -57,6 +58,7 @@ function randomQuestion() {
             individualAnswer = document.createElement('li');
             answersPrompt.appendChild(individualAnswer);
             answerButtons = document.createElement('button');
+            answerButtons.classList.add("answerbutton");
             answerButtons.innerText = questionAnswers[i];
             answersPrompt.appendChild(answerButtons)
         }
@@ -64,6 +66,22 @@ function randomQuestion() {
         // removes the picked question and answer from getting picked again
         thisQuizQuestions.splice(currentIndex, 1);
         thisQuizAnswers.splice(currentIndex, 1);
+    }
+}
+
+// checks the user's answer to determine if correct
+// takes the inner text (answer) of the clicked answer and finds the index of it in the answer array
+// if the index of the clicked answer equals the index listed at the end of the answer array, returns correct
+// if the index is not equal, the wrong answer was chosen and the quiz timer depletes by 10 seconds
+function checkAnswer(event) {
+    var clickedAnswer = event.target.innerText;
+    var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
+    if (clickedAnswerIndex === questionAnswers[4]) {
+        console.log('correct!');
+        randomQuestion();
+    } else {
+        console.log('incorrect!');
+        quizTime -= 10;
     }
 }
 
@@ -81,4 +99,4 @@ function beginQuiz() {
 }
 
 startButton.addEventListener("click", beginQuiz);
-answersPrompt.addEventListener("click", randomQuestion);
+answersPrompt.addEventListener("click", checkAnswer);
