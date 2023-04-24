@@ -90,7 +90,7 @@ function checkAnswer(event) {
     var clickedAnswer = event.target.innerText;
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
 
-    // logs answer as correct and adds to score
+    // logs answer as correct
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
@@ -102,7 +102,6 @@ function checkAnswer(event) {
             endQuiz();
         }
     // logs answer as incorrect and subtracts from score and timer
-    // will only subtract from score if greater than 20 (to avoid negative scores)
     } else {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
@@ -131,7 +130,7 @@ function beginQuiz() {
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
 
-    // runs quizTimer to start the timer and sets score at 0
+    // runs quizTimer to start the timer and sets score at 100
     quizTimer();
     score = 100;
 
