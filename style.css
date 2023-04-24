@@ -30,6 +30,16 @@ header h2 {
     list-style-type: none;
 }
 
+#correctAnswer {
+    color: green;
+    font-size: 40px;
+}
+
+#incorrectAnswer {
+    color: red;
+    font-size: 40px;
+}
+
 ul {
     padding: 0;
 }

@@ -10,6 +10,7 @@ var incorrectAnswer = document.getElementById("incorrectAnswer")
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
 
+// array containing the 5 possible quiz questions
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
 "The condition of an if/else statement is enclosed with _____.",
@@ -17,6 +18,8 @@ var possibleQuestions =
 "String values must be enclosed within _____ when being assigned to variables.",
 "A very useful tool used during development and debugging for printing content to the debugger is:"]
 
+// array containing nested arrays with the answers to each respective question
+// the last element of each array is the index of the correct answer
 var quizAnswers = [
 ['strings', 'booleans', 'alerts', 'numbers', 2],
 ['quotes', 'curly brackets', 'parenthesis', 'square brackets', 2],
@@ -24,9 +27,12 @@ var quizAnswers = [
 ['commas', 'curly brackets', 'quotes', 'parenthesis', 2],
 ['JavaScript', 'terminal/bash', 'for loops', 'console.log', 3]]
 
+// sets the quiz's timer and is called once the quiz is initialized
 function quizTimer() {
     quizTime = 80;
 
+    // if the quiz's timer goes below 10 seconds, a Hurry message is added
+    // once the timer hits 0, the message changes to 'Time's Up!'
     var quizInterval = setInterval(function () {
         if (quizTime >= 10) {
             timerEl.textContent = quizTime + ' seconds';
@@ -83,6 +89,8 @@ function checkAnswer(event) {
 
     var clickedAnswer = event.target.innerText;
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
+
+    // logs answer as correct and adds to score
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
@@ -94,6 +102,8 @@ function checkAnswer(event) {
         } else {
             endQuiz();
         }
+    // logs answer as incorrect and subtracts from score and timer
+    // will only subtract from score if greater than 20 (to avoid negative scores)
     } else {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
@@ -118,19 +128,23 @@ function beginQuiz() {
     thisQuizQuestions = possibleQuestions.slice() 
     thisQuizAnswers = quizAnswers.slice()
 
+    // readies quiz by removing the other displays beside the quiz screen (w/ question and answers)
     startScreen.style.display = 'none';
     quizScreen.style.display = 'block';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
 
+    // runs quizTimer to start the timer and sets score at 0
     quizTimer();
     score = 0;
 
+    // ensures that quiz has begun and will generate a random question by running randomQuestion
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
     } 
 }
 
+// ends quiz by removing the quiz screen and shows the end screen with the final score
 function endQuiz() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
@@ -138,12 +152,15 @@ function endQuiz() {
     scoreEl.innerText = score;
 }
 
+// initializes the initial start screen
 function init() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'none';
 }
 
+// pressing the Start Quiz button results in the quiz start
 startButton.addEventListener("click", beginQuiz);
+// clicking on any answer button will check the answer to see if it is correct
 answersPrompt.addEventListener("click", checkAnswer);
 
 init();
