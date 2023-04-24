@@ -94,7 +94,6 @@ function checkAnswer(event) {
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
-        score += 20;
         console.log(score)
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
@@ -108,10 +107,8 @@ function checkAnswer(event) {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
         quizTime -= 10;
-        if (score >= 20) {
-            score -= 20;
-        }
-        console.log(score)
+        score -= 20;
+        console.log(score);
 
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
@@ -136,7 +133,7 @@ function beginQuiz() {
 
     // runs quizTimer to start the timer and sets score at 0
     quizTimer();
-    score = 0;
+    score = 100;
 
     // ensures that quiz has begun and will generate a random question by running randomQuestion
     if (thisQuizQuestions.length > 0) {
