@@ -106,7 +106,7 @@ function beginQuiz() {
     thisQuizAnswers = quizAnswers.slice()
 
     startScreen.style.display = 'none';
-    endScreen.style.display = 'none';
+    quizScreen.style.display = 'block';
 
     quizTimer();
     score = 0;
@@ -122,5 +122,12 @@ function endQuiz() {
     scoreEl.innerText = score;
 }
 
+function init() {
+    quizScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+}
+
 startButton.addEventListener("click", beginQuiz);
 answersPrompt.addEventListener("click", checkAnswer);
+
+init();
