@@ -150,6 +150,7 @@ function endQuiz() {
     scoreEl.innerText = score;
 }
 
+// shows the highscores page
 function showHighscores() {
     startScreen.style.display = 'none';
     quizScreen.style.display = 'none';
@@ -171,7 +172,7 @@ function init() {
 startButton.addEventListener("click", beginQuiz);
 // clicking on any answer button will check the answer to see if it is correct
 answersPrompt.addEventListener("click", checkAnswer);
-
+// clicking 'View Highscores' at any point will redirect the user to the highscores page
 viewHighscores.addEventListener("click", showHighscores);
 
 init();
