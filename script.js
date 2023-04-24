@@ -119,6 +119,7 @@ function beginQuiz() {
 function endQuiz() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
+    quizTime = 0;
     scoreEl.innerText = score;
 }
 
