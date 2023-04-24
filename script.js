@@ -14,7 +14,7 @@ var viewHighscores = document.getElementById("viewHighscores")
 var submissionMessage = document.getElementById("submissionMsg")
 
 var startButton = document.querySelector(".start-button");
-var answerButton = document.querySelectorAll(".answerbutton");
+var answerButton = document.getElementsByClassName(".answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
 var submitButton = document.querySelector(".submit-button")
 
@@ -37,7 +37,7 @@ var quizAnswers = [
 
 // sets the quiz's timer and is called once the quiz is initialized
 function quizTimer() {
-    quizTime = 80;
+    quizTime = 60;
 
     // if the quiz's timer goes below 10 seconds, a Hurry message is added
     // once the timer hits 0, the message changes to 'Time's Up!'
@@ -54,6 +54,7 @@ function quizTimer() {
         } else {
             timerEl.textContent = 'Time\'s up!';
             clearInterval(quizInterval);
+            endQuiz();
         }
     }, 1000);
 }
@@ -75,7 +76,7 @@ function randomQuestion() {
             individualAnswer = document.createElement('li');
             answersPrompt.appendChild(individualAnswer);
             answerButtons = document.createElement('button');
-            answerButtons.classList.add("answerbutton");
+            answerButtons.classList.add("answer-button");
             answerButtons.innerText = questionAnswers[i];
             answersPrompt.appendChild(answerButtons);
         }
