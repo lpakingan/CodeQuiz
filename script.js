@@ -135,7 +135,6 @@ function beginQuiz() {
     quizScreen.style.display = 'block';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
-    viewHighscores.style.display = 'none';
 
     // runs quizTimer to start the timer and sets score at 100
     quizTimer();
@@ -157,15 +156,19 @@ function endQuiz() {
 }
 
 // shows the highscores page
+// if clicked in the middle of a quiz, essentially treats the quiz as over and resets state for next start
 function showHighscores() {
     startScreen.style.display = 'none';
     quizScreen.style.display = 'none';
     endScreen.style.display = 'none';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
-    viewHighscores.style.display = 'none';
 
     highscoresScreen.style.display = 'block';
+
+    answersPrompt.innerHTML = '';
+    quizTime = 0;
+    score = 0;
 }
 
 // when 'Go Back' button is pressed on highscores page, return user to the start page
