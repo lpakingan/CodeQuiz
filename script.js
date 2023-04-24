@@ -176,6 +176,7 @@ function backtoStartScreen() {
     highscoresScreen.style.display = 'none';
     endScreen.style.display = 'none';
     answersPrompt.innerHTML = '';
+    timerEl.innerText = 'Press Start Quiz to begin!';
 
     startScreen.style.display = 'block';
 }
