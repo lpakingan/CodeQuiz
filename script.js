@@ -1,11 +1,12 @@
 var timerEl = document.getElementById('quizTimer');
-var scoreEl = document.getElementById('score')
+var scoreEl = document.getElementById('score');
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
+var endScreen = document.querySelector(".end_screen");
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
-var startButton = document.querySelector(".start-button")
-var answerButton = document.querySelectorAll(".answerbutton")
+var startButton = document.querySelector(".start-button");
+var answerButton = document.querySelectorAll(".answerbutton");
 
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -23,7 +24,6 @@ var quizAnswers = [
 
 function quizTimer() {
     quizTime = 80;
-    startScreen.style.display = 'none';
 
     var quizInterval = setInterval(function () {
         if (quizTime >= 10) {
@@ -61,7 +61,7 @@ function randomQuestion() {
             answerButtons = document.createElement('button');
             answerButtons.classList.add("answerbutton");
             answerButtons.innerText = questionAnswers[i];
-            answersPrompt.appendChild(answerButtons)
+            answersPrompt.appendChild(answerButtons);
         }
 
         // removes the picked question and answer from getting picked again
@@ -104,8 +104,12 @@ function beginQuiz() {
     // create separate arrays that will not affect the root arrays (so it is unique for each quiz)
     thisQuizQuestions = possibleQuestions.slice() 
     thisQuizAnswers = quizAnswers.slice()
+
+    startScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+
     quizTimer();
-    score = 0
+    score = 0;
 
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
@@ -114,7 +118,8 @@ function beginQuiz() {
 
 function endQuiz() {
     quizScreen.style.display = 'none';
-    scoreEl.innerText = score
+    endScreen.style.display = 'block';
+    scoreEl.innerText = score;
 }
 
 startButton.addEventListener("click", beginQuiz);
