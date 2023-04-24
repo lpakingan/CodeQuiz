@@ -78,10 +78,13 @@ function checkAnswer(event) {
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
+        score += 20;
         randomQuestion();
     } else {
         console.log('incorrect!');
         quizTime -= 10;
+        score -= 20;
+        randomQuestion()
     }
 }
 
