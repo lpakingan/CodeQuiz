@@ -14,7 +14,7 @@ var incorrectAnswer = document.getElementById("incorrectAnswer")
 
 var startButton = document.querySelector(".start-button");
 var answerButton = document.querySelectorAll(".answerbutton");
-var backButton = document.querySelector(".goBack-button")
+var backButton = document.querySelectorAll(".goBack-button")
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -174,6 +174,9 @@ function showHighscores() {
 // when 'Go Back' button is pressed on highscores page, return user to the start page
 function backtoStartScreen() {
     highscoresScreen.style.display = 'none';
+    endScreen.style.display = 'none';
+    answersPrompt.innerHTML = '';
+
     startScreen.style.display = 'block';
 }
 
@@ -191,6 +194,9 @@ answersPrompt.addEventListener("click", checkAnswer);
 // clicking 'View Highscores' at any point will redirect the user to the highscores page
 viewHighscores.addEventListener("click", showHighscores);
 // clicking 'Go Back' button on highscores page redirects user to the start screen
-backButton.addEventListener("click", backtoStartScreen)
+// for loop allows for the event listener to be applied to all back buttons
+for (var i = 0; i < backButton.length; i ++) {
+    backButton[i].addEventListener("click", backtoStartScreen)
+}
 
 init();
