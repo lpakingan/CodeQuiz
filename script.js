@@ -18,6 +18,7 @@ var answerFeedback = document.getElementById("feedback")
 var viewHighscores = document.getElementById("viewHighscores");
 var highscoresList = document.querySelector(".highscoresList")
 var submissionMessage = document.getElementById("submissionMsg");
+var clearMessage = document.getElementById("clearMsg")
 
 // variables for the different responsive buttons in the quiz application
 var startButton = document.querySelector(".start-button");
@@ -239,6 +240,7 @@ function backtoStartScreen() {
     timerEl.style.display = 'block';
     timerEl.innerText = 'Press Start Quiz to begin!';
     submissionMessage.innerText = '';
+    clearMessage.innerText = '';
 
     startScreen.style.display = 'block';
 }
@@ -297,7 +299,7 @@ submitButton.addEventListener("click", function(event) {
     localStorage.setItem("highscores", JSON.stringify(highscores));
     renderHighscoresList()
     }
-})
+});
 
 // clears highscores that are stored locally
 clearButton.addEventListener("click", function(event) {
@@ -305,6 +307,7 @@ clearButton.addEventListener("click", function(event) {
 
     localStorage.removeItem("highscores");
     highscoresList.innerHTML = '';
+    clearMessage.innerHTML = 'Highscores cleared!';
 });
 
 init();
