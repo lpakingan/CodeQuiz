@@ -14,6 +14,7 @@ var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer");
 var incorrectAnswer = document.getElementById("incorrectAnswer");
+var answerFeedback = document.getElementById("feedback")
 var viewHighscores = document.getElementById("viewHighscores");
 var highscoresList = document.querySelector(".highscoresList")
 var submissionMessage = document.getElementById("submissionMsg");
@@ -105,12 +106,16 @@ function randomQuestion() {
 // if the index of the clicked answer equals the index listed at the end of the answer array, returns correct
 // if the index is not equal, the wrong answer was chosen and the quiz timer depletes by 10 seconds
 function checkAnswer(event) {
-    // removes correct/incorrect answer display
+    // removes correct/incorrect/feedback answer display
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
+    answerFeedback.style.display = 'none';
 
     var clickedAnswer = event.target.innerText;
-    var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
+    var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer);
+    // index into where the right answer is to give feedback in case user answered incorrectly
+    var rightAnswerIndex = questionAnswers[4];
+    var rightAnswer = questionAnswers[rightAnswerIndex];
 
     // logs answer as correct and adds to score
     if (clickedAnswerIndex === questionAnswers[4]) {
@@ -129,6 +134,8 @@ function checkAnswer(event) {
     } else {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
+        answerFeedback.style.display = 'block';
+        answerFeedback.innerText = `The correct answer was ${rightAnswer}!`;
         quizTime -= 10;
         console.log(score);
         scoreEl.innerText = score;
