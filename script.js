@@ -160,6 +160,7 @@ function beginQuiz() {
     quizScreen.style.display = 'block';
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
+    answerFeedback.style.display = 'none';
 
     // runs quizTimer to start the timer and sets score at 0
     quizTimer();
