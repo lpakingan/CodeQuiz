@@ -106,7 +106,7 @@ function checkAnswer(event) {
     var clickedAnswer = event.target.innerText;
     var clickedAnswerIndex = questionAnswers.indexOf(clickedAnswer)
 
-    // logs answer as correct
+    // logs answer as correct and adds to score
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
@@ -119,7 +119,7 @@ function checkAnswer(event) {
         } else {
             endQuiz();
         }
-    // logs answer as incorrect and subtracts from score and timer
+    // logs answer as incorrect and subtracts from timer
     } else {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
@@ -148,7 +148,7 @@ function beginQuiz() {
     correctAnswer.style.display = 'none';
     incorrectAnswer.style.display = 'none';
 
-    // runs quizTimer to start the timer and sets score at 100
+    // runs quizTimer to start the timer and sets score at 0
     quizTimer();
     score = 0;
     scoreEl.innerText = score;
@@ -220,7 +220,7 @@ for (var i = 0; i < backButton.length; i ++) {
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    var name = document.getElementById("submission").value;
+    var name = document.getElementById("submission").value.trim();
 
     // if the name that is input is empty
     if (name === "" || !name) {
