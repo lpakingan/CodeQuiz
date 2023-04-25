@@ -3,6 +3,11 @@ body {
     font-size: 20px;
     margin: auto;
     padding: 10px;
+    background-image: url('https://i.giphy.com/media/j0HjChGV0J44KrrlGv/giphy.webp');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-attachment: fixed;
 }
 
 .quizHeader {
@@ -11,11 +16,13 @@ body {
 }
 
 header h2 {
-    font-size: 15px;
+    font-size: 20px;
+    padding: 10px;
 }
 
 .start_screen {
     text-align: center;
+    line-height: 150%;
 }
 
 .start_screen h1 {
@@ -71,7 +78,7 @@ ul {
 button {
     color: white;
     font-size: 25px;
-    background-color: blueviolet;
+    background-color: rgb(28, 25, 31);
     padding: 15px;
     margin: 10px;
     border-radius: 10px;
@@ -80,8 +87,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: blue;
-    zoom: 1.1;
+    background-color: rgb(133, 133, 153);
     transition: 1s
 }
 
