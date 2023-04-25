@@ -333,4 +333,5 @@ clearButton.addEventListener("click", function(event) {
     clearMessage.innerHTML = 'Highscores cleared!';
 });
 
+// initializes the page
 init();

@@ -1,3 +1,4 @@
+/* styling for the body and background image */
 body {
     font-family: Arial;
     font-size: 20px;
@@ -10,6 +11,7 @@ body {
     background-attachment: fixed;
 }
 
+/* styling for the header elements */
 .quizHeader {
     display: flex;
     justify-content: space-between;
@@ -20,6 +22,7 @@ header h2 {
     padding: 10px;
 }
 
+/* styling for start screen elements */
 .start_screen {
     text-align: center;
     line-height: 150%;
@@ -29,10 +32,12 @@ header h2 {
     font-size: 40px;
 }
 
+/* styling for quiz screen */
 .quiz_screen {
     text-align: center;
 }
 
+/* styling for highscores screen elements */
 .highscores_screen {
     text-align: center;
     list-style-position: inside;
@@ -48,11 +53,13 @@ header h2 {
     padding: 0;
 }
 
+/* styling for the submission box */
 #submission {
     margin: 30px;
     font-size: 30px;
 }
 
+/* styling for answer elements */
 .answers {
     list-style-type: none;
 }
@@ -71,10 +78,12 @@ ul {
     padding: 0;
 }
 
+/* styling for end screen elements */
 .end_screen {
     text-align: center;
 }
 
+/* styling for button/clickable elements */
 button {
     color: white;
     font-size: 25px;
@@ -92,5 +101,7 @@ button:hover {
 }
 
 #viewHighscores:hover {
-    cursor: pointer
+    cursor: pointer;
+    color: rgb(133, 133, 153);
+    transition: 1s
 }
