@@ -1,5 +1,6 @@
 var timerEl = document.getElementById('quizTimer');
 var scoreEl = document.getElementById('score');
+var finalScoreEl = document.getElementById('finalScore');
 
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
@@ -110,6 +111,7 @@ function checkAnswer(event) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
         console.log(score)
+        scoreEl.innerText = score;
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
             randomQuestion();
@@ -123,6 +125,7 @@ function checkAnswer(event) {
         quizTime -= 10;
         score -= 20;
         console.log(score);
+        scoreEl.innerText = score;
 
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
@@ -148,6 +151,7 @@ function beginQuiz() {
     // runs quizTimer to start the timer and sets score at 100
     quizTimer();
     score = 100;
+    scoreEl.innerText = score;
 
     // ensures that quiz has begun and will generate a random question by running randomQuestion
     if (thisQuizQuestions.length > 0) {
@@ -164,7 +168,7 @@ function endQuiz() {
     // if user played previously in the same session, displays submit button again
     submitButton.style.display = 'inline';
     quizTime = 0;
-    scoreEl.innerText = score;
+    finalScoreEl.innerText = score;
 }
 
 // shows the highscores page
