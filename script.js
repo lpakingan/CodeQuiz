@@ -110,7 +110,8 @@ function checkAnswer(event) {
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
-        console.log(score)
+        console.log(score);
+        score += 20;
         scoreEl.innerText = score;
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
@@ -123,7 +124,6 @@ function checkAnswer(event) {
         console.log('incorrect!');
         incorrectAnswer.style.display = 'block';
         quizTime -= 10;
-        score -= 20;
         console.log(score);
         scoreEl.innerText = score;
 
@@ -150,7 +150,7 @@ function beginQuiz() {
 
     // runs quizTimer to start the timer and sets score at 100
     quizTimer();
-    score = 100;
+    score = 0;
     scoreEl.innerText = score;
 
     // ensures that quiz has begun and will generate a random question by running randomQuestion
@@ -185,7 +185,7 @@ function showHighscores() {
     answersPrompt.innerHTML = '';
     clearInterval(quizInterval)
     timerEl.textContent = '';
-    score = 100;
+    score = 0;
 }
 
 // when 'Go Back' button is pressed on highscores page, return user to the start page
