@@ -111,8 +111,8 @@ function checkAnswer(event) {
     if (clickedAnswerIndex === questionAnswers[4]) {
         console.log('correct!');
         correctAnswer.style.display = 'block';
-        console.log(score);
         score += 20;
+        console.log(score);
         scoreEl.innerText = score;
         if (thisQuizQuestions.length > 0) {
             answersPrompt.innerHTML ='';
