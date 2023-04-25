@@ -187,8 +187,8 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    clearInterval(quizInterval)
-    timerEl.textContent = '';
+    // clearInterval(quizInterval)
+    timerEl.style.display = 'none';
     score = 0;
 }
 
