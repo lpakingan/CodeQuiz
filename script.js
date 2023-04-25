@@ -208,9 +208,10 @@ function showHighscores() {
 function renderHighscoresList() {
     // clears out the list initially in case it was already shown (to prevent duplication)
     highscoresList.innerHTML = '';
+    sortScores();
 
-    for (var i = 0; i < highscores.length; i++) {
-        var highscore = highscores[i];
+    for (var i = 0; i < sortedHighscores.length; i++) {
+        var highscore = sortedHighscores[i];
 
         var highscoreSubmission = document.createElement('li');
         highscoreSubmission.textContent = `${highscore.scoreName}: ${highscore.highscore}`;
@@ -218,6 +219,17 @@ function renderHighscoresList() {
         highscoresList.appendChild(highscoreSubmission);
     }
 }
+
+// sort the scores in descending order if there are scores stored locally
+function sortScores() {
+    if (highscores == null) {
+        return;
+    } else {
+        sortedHighscores = highscores.sort(function(a,b) {
+        return b.highscore - a.highscore;
+    })
+    return sortedHighscores;
+}}
 
 // when 'Go Back' button is pressed on highscores page, return user to the start page
 function backtoStartScreen() {
