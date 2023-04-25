@@ -171,7 +171,8 @@ function endQuiz() {
     viewHighscores.style.display = 'block';
     // if user played previously in the same session, displays submit button again
     submitButton.style.display = 'inline';
-    quizTime = 0;
+    timerEl.innerText = 'Quiz Over!';
+    clearInterval(quizInterval);
     finalScoreEl.innerText = score;
 }
 
@@ -187,7 +188,7 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    // clearInterval(quizInterval)
+    clearInterval(quizInterval);
     timerEl.style.display = 'none';
     score = 0;
 }
