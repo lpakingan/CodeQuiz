@@ -228,8 +228,11 @@ submitButton.addEventListener("click", function(event) {
     } else {
         submissionMessage.innerText = 'Score submission successful! Go back to play again!'
         submitButton.style.display = 'none';
-        localStorage.setItem("name", name);
-        localStorage.setItem("score", score);
+        var submission = {
+            scoreName: name,
+            highscore: score
+        };
+        localStorage.setItem("submission", JSON.stringify(submission));
     }
 })
 
