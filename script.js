@@ -198,7 +198,7 @@ function renderHighscoresList() {
         var highscore = highscores[i];
 
         var highscoreSubmission = document.createElement('li');
-        highscoreSubmission.textContent = highscore;
+        highscoreSubmission.textContent = `${highscore.scoreName}: ${highscore.highscore}`;
 
         highscoresList.appendChild(highscoreSubmission);
     }
