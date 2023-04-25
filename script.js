@@ -44,12 +44,13 @@ var quizAnswers = [
 ['commas', 'curly brackets', 'quotes', 'parenthesis', 2],
 ['JavaScript', 'terminal/bash', 'for loops', 'console.log', 3]]
 
+quizTime = 60;
+
 // sets the quiz's timer and is called once the quiz is initialized
 function quizTimer() {
-    quizTime = 60;
-
     // if the quiz's timer goes below 10 seconds, a Hurry message is added
     // once the timer hits 0, the message changes to 'Time's Up!'
+    quizTime = 60;
     quizInterval = setInterval(function () {
         if (quizTime >= 10) {
             timerEl.textContent = quizTime + ' seconds';
@@ -66,6 +67,11 @@ function quizTimer() {
             endQuiz();
         }
     }, 1000);
+}
+
+// stops the timer whenever called
+function stopTimer() {
+    clearInterval(quizInterval);
 }
 
 // picks questions in random order for quiz
@@ -179,10 +185,11 @@ function endQuiz() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
     viewHighscores.style.display = 'block';
+
     // if user played previously in the same session, displays submit button again
     submitButton.style.display = 'inline';
     timerEl.innerText = 'Quiz Over!';
-    clearInterval(quizInterval);
+    stopTimer();
     finalScoreEl.innerText = score;
 }
 
@@ -198,9 +205,15 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    // clearInterval(quizInterval);
     timerEl.style.display = 'none';
     score = 0;
+
+    // if View Highscores is clicked on mid-quiz, stops the timer
+    // checks to see if quiz has elapsed; if so, the timer is stopped
+    // if View Highscores is clicked prior to running the quiz (i.e upon load in), then stopTimer isn't necessary
+    if (quizTime !== 60) {
+        stopTimer();
+    }
 }
 
 // renders the highscore list from the locally stored highscores
@@ -234,11 +247,13 @@ function sortScores() {
 function backtoStartScreen() {
     highscoresScreen.style.display = 'none';
     endScreen.style.display = 'none';
+
     answersPrompt.innerHTML = '';
-    timerEl.style.display = 'block';
-    timerEl.innerText = 'Press Start Quiz to begin!';
     submissionMessage.innerText = '';
     clearMessage.innerText = '';
+
+    timerEl.style.display = 'block';
+    timerEl.innerText = 'Press Start Quiz to begin!';
 
     startScreen.style.display = 'block';
 }
@@ -253,6 +268,8 @@ function init() {
     var storedScores = JSON.parse(localStorage.getItem("highscores"));
     if (storedScores !== null) {
         highscores = storedScores;
+    } else {
+        highscores = [];
     }
 
     renderHighscoresList();
