@@ -198,11 +198,9 @@ function showHighscores() {
     highscoresScreen.style.display = 'block';
 
     answersPrompt.innerHTML = '';
-    clearInterval(quizInterval);
+    // clearInterval(quizInterval);
     timerEl.style.display = 'none';
     score = 0;
-
-    // renderHighscoresList();
 }
 
 // renders the highscore list from the locally stored highscores
@@ -246,10 +244,18 @@ function backtoStartScreen() {
 }
 
 // initializes the initial start screen
+// checks if there are any stored scores; if so, they will show on the highscores list
 function init() {
     quizScreen.style.display = 'none';
     endScreen.style.display = 'none';
     highscoresScreen.style.display = 'none';
+
+    var storedScores = JSON.parse(localStorage.getItem("highscores"));
+    if (storedScores !== null) {
+        highscores = storedScores;
+    }
+
+    renderHighscoresList();
 }
 
 // pressing the Start Quiz button results in the quiz start
