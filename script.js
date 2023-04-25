@@ -1,12 +1,15 @@
+// variables for quiz timer/scores
 var timerEl = document.getElementById('quizTimer');
 var scoreEl = document.getElementById('score');
 var finalScoreEl = document.getElementById('finalScore');
 
+// variables for the various screens of the quiz application
 var startScreen = document.querySelector(".start_screen");
 var quizScreen = document.querySelector(".quiz_screen");
 var endScreen = document.querySelector(".end_screen");
 var highscoresScreen = document.querySelector(".highscores_screen");
 
+// variables for quiz elements that dynamically change 
 var questionPrompt = document.getElementById('question');
 var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer");
@@ -15,6 +18,7 @@ var viewHighscores = document.getElementById("viewHighscores");
 var highscoresList = document.querySelector(".highscoresList")
 var submissionMessage = document.getElementById("submissionMsg");
 
+// variables for the different responsive buttons in the quiz application
 var startButton = document.querySelector(".start-button");
 var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
@@ -158,7 +162,6 @@ function beginQuiz() {
     if (thisQuizQuestions.length > 0) {
         randomQuestion();
     } 
-
 }
 
 // ends quiz by removing the quiz screen and shows the end screen with the final score
