@@ -12,14 +12,13 @@ var answersPrompt = document.querySelector(".answers");
 var correctAnswer = document.getElementById("correctAnswer");
 var incorrectAnswer = document.getElementById("incorrectAnswer");
 var viewHighscores = document.getElementById("viewHighscores");
+var highscoresList = document.querySelector(".highscoresList")
 var submissionMessage = document.getElementById("submissionMsg");
 
 var startButton = document.querySelector(".start-button");
 var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
 var submitButton = document.querySelector(".submit-button");
-
-var highscores = [];
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -190,6 +189,18 @@ function showHighscores() {
     score = 0;
 }
 
+// renders the highscore list from the locally stored highscores
+function renderHighscoresList() {
+    for (var i = 0; i < highscores.length; i++) {
+        var highscore = highscores[i];
+
+        var highscoreSubmission = document.createElement('li');
+        highscoreSubmission.textContent = highscore;
+
+        highscoresList.appendChild(highscoreSubmission);
+    }
+}
+
 // when 'Go Back' button is pressed on highscores page, return user to the start page
 function backtoStartScreen() {
     highscoresScreen.style.display = 'none';
@@ -224,7 +235,7 @@ submitButton.addEventListener("click", function(event) {
 
     var name = document.getElementById("submission").value.trim();
 
-    // if the name that is input is empty
+    // if the name that is input is empty it will prompt the user to submit again
     if (name === "" || !name) {
         submissionMessage.innerText = 'You must enter your name to submit your highscore!'
     } else {
@@ -234,10 +245,25 @@ submitButton.addEventListener("click", function(event) {
             scoreName: name,
             highscore: score
         };
-        highscores.push(submission);
-        name.value = '';
 
-        localStorage.setItem("submission", JSON.stringify(submission));
+    // checks to see if there is already a highscores array in the local storage
+    // if there isn't, create a new array; if there is, continue the stored array
+    var storedScores = JSON.parse(localStorage.getItem("highscores"));
+
+    if(storedScores == null) {
+        highscores = [];
+    } else {
+        highscores = storedScores;
+    }
+    
+    // pushes the submission into the highscore array
+    highscores.push(submission);
+    console.log(submission);
+    console.log(highscores)
+    name.value = '';
+
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    renderHighscoresList();
     }
 })
 
