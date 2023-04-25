@@ -19,6 +19,8 @@ var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
 var submitButton = document.querySelector(".submit-button");
 
+var highscores = [];
+
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
 ["Commonly used data types do NOT include _____.",
@@ -232,6 +234,9 @@ submitButton.addEventListener("click", function(event) {
             scoreName: name,
             highscore: score
         };
+        highscores.push(submission);
+        name.value = '';
+
         localStorage.setItem("submission", JSON.stringify(submission));
     }
 })
