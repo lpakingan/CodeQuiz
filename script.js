@@ -23,6 +23,7 @@ var startButton = document.querySelector(".start-button");
 var answerButton = answersPrompt.getElementsByClassName("answer-button");
 var backButton = document.querySelectorAll(".goBack-button");
 var submitButton = document.querySelector(".submit-button");
+var clearButton = document.querySelector(".clearScores-button")
 
 // array containing the 5 possible quiz questions
 var possibleQuestions = 
@@ -191,10 +192,15 @@ function showHighscores() {
     clearInterval(quizInterval);
     timerEl.style.display = 'none';
     score = 0;
+
+    // renderHighscoresList();
 }
 
 // renders the highscore list from the locally stored highscores
 function renderHighscoresList() {
+    // clears out the list initially in case it was already shown (to prevent duplication)
+    highscoresList.innerHTML = '';
+
     for (var i = 0; i < highscores.length; i++) {
         var highscore = highscores[i];
 
@@ -226,6 +232,7 @@ function init() {
 
 // pressing the Start Quiz button results in the quiz start
 startButton.addEventListener("click", beginQuiz);
+
 // clicking 'View Highscores' at any point will redirect the user to the highscores page
 viewHighscores.addEventListener("click", showHighscores);
 // clicking 'Go Back' button on highscores page redirects user to the start screen
@@ -268,8 +275,16 @@ submitButton.addEventListener("click", function(event) {
     name.value = '';
 
     localStorage.setItem("highscores", JSON.stringify(highscores));
-    renderHighscoresList();
+    renderHighscoresList()
     }
 })
+
+// clears highscores that are stored locally
+clearButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    localStorage.removeItem("highscores");
+    highscoresList.innerHTML = '';
+});
 
 init();
