@@ -1,28 +1,9 @@
-# Bootcamp Challenge #4: Code Quiz
 
-## Summary of the Challenge
-
-In this week's challenge, we were tasked with building a timed coding quiz with multiple choice questions. In order to create the quiz, we needed to use dynamically updated HTML and CSS elements that were powered by JavaScript. 
-
-## Acceptance Criteria
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
 
 ## Strategy
 
 ### HTML
-There were three main components of this week's challenge: HTML, CSS and JavaScript. The first step of starting the project was deconstructing the quiz's various interfaces. These could be divided into 4 main sections:
+There were three main components for creating this coding quiz: HTML, CSS and JavaScript. The first step of starting the project was deconstructing the quiz's various interfaces. These could be divided into 4 main sections:
 
 1. A start screen that is initialized when the quiz webpage is opened and includes a button to begin the quiz
 2. A quiz screen that has dynamically updated questions/answers, scoring, timing, and answer feedback
@@ -63,4 +44,4 @@ To make the user interface look presentable, CSS styling was used to help format
 - GIPHY (for the quiz background)
 
 ## Deployed Application
-The final deployed webpage can be found [here](https://lpakingan.github.io/challenge-4-code-quiz/).
+The final deployed webpage can be found [here](https://lpakingan.github.io/CodeQuiz/).
